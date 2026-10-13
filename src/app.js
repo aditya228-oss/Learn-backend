@@ -19,7 +19,7 @@ app.get("/notes" ,async(req,res)=>{
         notes: notes
     })
 })
-app.delete("/notes",async(req,res)=>{
+app.delete("/notes/:id",async(req,res)=>{
     const id =req.params.id
     await notemodel.findOneAndDelete({
         _id:id
@@ -28,7 +28,7 @@ app.delete("/notes",async(req,res)=>{
         message:"note deleted success" 
     })
 })
-app.patch("/notes",async(req,res)=>{
+app.patch("/notes/:id",async(req,res)=>{
     const id =req.params.id
     const description= req.body.description
     await notemodel.findOneAndUpdate({_id:id},{description:description})
